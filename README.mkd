@@ -1,6 +1,8 @@
 stationx -- An Nginx Configuration Generator
 ================================
 
+Quick note: For now, an example configuration file can be found at <http://dl.dropbox.com/u/146184/config.rb> but this will move to Github ASAP.
+
 stationx is an attempt to make creating and **maintaining** [nginx](http://nginx.net/) configuration files easier.
 
 Instead of writing something like this:
