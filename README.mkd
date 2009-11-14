@@ -76,7 +76,13 @@ Configuration & Setup
 -------------------------------
 The standard download includes an example file consisting of my own personal stationx configuration file. Please play around with it and slowly co-opt it for your own use.
 
-Here is a baseline setup for `N.new('.example.com')`:
+For now, it expects a folder hierarchy like this:
+
+* config.rb
+* lib/{nginx_server.rb,options_core.rb}
+* files/enabled/<output files go here>
+
+After successfully running <ruby config.rb> for `N.new('.example.com') >> 'server1'`, you will have an nginx config file in <files/enabled/server1>. This file should be copied into your enabled sites folder and expects the following web directory setup:
 
 * __/var/www__ -- Location of all served files.
 * __/var/www/eshao.es/public__ -- Location of all served files for `{www,}.eshao.es`. <http://eshao.es> corresponds to `/var/www/eshao.es/public/index.html` .
@@ -95,7 +101,10 @@ stationx is currently in a usable beta form. As it is a personal project, it nee
 Here is a roadmap of what needs to be done:
 
 * Freeze and document the API.
-* Documentation and examples need to be added.
+* Provide copies of baseline nginx.conf to let people bootstrap.
+* Wiki-ish documentation and examples need to be added. 
+    * Give a walkthrough of setting up an nginx configuration with stationx on FreeBSD -- where different files should go, etc.
+    * Document how nginx plays with {php's fastcgi, thttpd, rails, wordpress}.
 * Collect feedback and patches from experts on configurations themselves.
 * Refactor options_core.rb into smaller files that are considered modules or extensions. Some code from nginx_core.rb should also go into these modules. Extensibility is a priority.
 * Document and refactor nginx_core.rb so a newcomer can see what it is doing.
