@@ -56,6 +56,7 @@ Write something as simple as this:
      1 N.new('.eshao.es') { pppr } >> 'nginx_configuration_file_for_server1'
 
 To summarize the benefits:
+
 * __Far smaller configurations__: In my personal sysadmin duties, this has reduced 52 kilobytes of messy non-standard nginx configurations into a sleek 6 kilobyte [file](http://dl.dropbox.com/u/146184/config.rb). 
 * __Standardized configurations__: Instead of hunting best-practice configurations from Wiki, Google, and heresay, let geeks in the know provide the specifics of your configuration. If you don't want to deal with the details, they're happily abstracted away from you.
 * __[DRY](http://en.wikipedia.org/wiki/Don%27t_repeat_yourself) configurations__: Whenever I need to change anything, I change it in one place and run one ruby script to regenerate configurations for ALL my domains.
@@ -64,20 +65,19 @@ To summarize the benefits:
 
 The only time you shouldn't use stationx is when you have many non-standard configurations. 
 
-- - - -
 
 Philosophy
 ----------------
 * __One-right-way__ -- Borrowing from Python, there is one correct place for your files for a given domain to go. Even though you can customize, we codify best practices into the framework. 
 * __Declaritive language__ -- Taking a cue from Puppet, specify what you want your end result to be instead of how to get there. 
 
-- - - - 
 
 Configuration & Setup
 -------------------------------
 The standard download includes an example file consisting of my own personal stationx configuration file. Please play around with it and slowly co-opt it for your own use.
 
 Here is a baseline setup for `N.new('.example.com')`:
+
 * __/var/www__ -- Location of all served files.
 * __/var/www/eshao.es/public__ -- Location of all served files for `{www,}.eshao.es`. <http://eshao.es> corresponds to `/var/www/eshao.es/public/index.html` .
 * __/var/www/eshao.es/public/sd__ -- Location of all served files for `sd.eshao.es`. http://sd.eshao.es corresponds to `/var/www/eshao.es/public/sd/index.html` .
@@ -87,13 +87,13 @@ Here is a baseline setup for `N.new('.example.com') { php }`:
 
 TBD
 
-- - - -
 
 Timeline
 ------------
 stationx is currently in a usable beta form. As it is a personal project, it needs to be cleaned up and its configurations need to be vetted by experts so we can authoritatively say we have best-practice configurations. 
 
 Here is a roadmap of what needs to be done:
+
 * Freeze and document the API.
 * Documentation and examples need to be added.
 * Collect feedback and patches from experts on configurations themselves.
