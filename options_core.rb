@@ -37,6 +37,25 @@ def rename(req, loc)
   eos
 end
 
+# Disable auto index on a location
+def autoindex(loc, switch = 'on')
+  oputs <<-eos
+  location #{loc} {
+    autoindex #{switch};
+  }
+  eos
+end
+
+# No spidering
+def no_spider
+  oputs <<-eos
+  location /robots.txt {
+    alias /usr/local/etc/nginx/robots.txt;
+  }
+  eos
+end
+
+
 ########################################################################
 #
 #
