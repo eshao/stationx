@@ -13,6 +13,18 @@ def redirh(to)
   redir("http://#{to}")
 end
 
+# As per https://github.com/ioerror/duraconf
+def ssl(crt, key)
+  oputs <<-eos
+  ssl on;
+  ssl_certificate     #{crt};
+  ssl_certificate_key #{key};
+  # Only strong ciphers in PFS mode
+  ssl_ciphers DHE-RSA-AES256-SHA:DHE-DSS-AES256-SHA:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA;
+  ssl_protocols SSLv3 TLSv1;
+  eos
+end
+
 def password(htaccess) 
   oputs <<-eos
   auth_basic "Restricted";
@@ -55,8 +67,7 @@ def no_spider
   eos
 end
 
-
-########################################################################
+#######################################################################
 #
 #
 # Four major scripting languages.

@@ -7,6 +7,11 @@ class N
   def initialize(*params)
     # Check for subdomain parameter
     @name = params[0]
+    @port = 80
+    if @name =~ /^(.*):(\d*)$/
+      @name = $1
+      @port = $2
+    end
     if @name =~ /^\.(.*)$/
       @sd = true
       @name = $1
@@ -58,7 +63,7 @@ server {
   set $root_pub     #{@root_pub};
   set $rel_root_pub #{@rel_root_pub};
 
-  listen 80;
+  listen #{@port};
   server_name   #{@sd ? '.' : ''}#{@name};
   access_log    #{@log}/access.log;
   error_log     #{@log}/error.log info;
