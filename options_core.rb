@@ -22,6 +22,9 @@ def ssl(crt, key)
   # Only strong ciphers in PFS mode
   ssl_ciphers DHE-RSA-AES256-SHA:DHE-DSS-AES256-SHA:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA;
   ssl_protocols SSLv3 TLSv1;
+  # SSL optimizations
+  ssl_session_cache   shared:SSL:10m;
+  ssl_session_timeout 10m;
   eos
 end
 
