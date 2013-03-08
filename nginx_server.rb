@@ -1,9 +1,9 @@
 # lib/nginx_server.rb
 #
-# 
+#
 
 class N
-  attr_accessor :prefix, :opt, :suffix
+  attr_accessor :name, :prefix, :opt, :suffix
   def initialize(*params)
     # Check for subdomain parameter
     @name = params[0]
@@ -101,6 +101,6 @@ server {
   end
 end
 
-def redir(from, to) 
+def redir(from, to)
   N.new(from, :localhost) { redirect(to) }
 end

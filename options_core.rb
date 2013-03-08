@@ -28,7 +28,7 @@ def ssl(crt, key)
   eos
 end
 
-def password(htaccess) 
+def password(htaccess)
   oputs <<-eos
   auth_basic "Restricted";
   auth_basic_user_file #{htaccess};
@@ -160,13 +160,13 @@ end
 
 # Proxy to some backend.
 def proxy(port, num = 1)
-  pputs "upstream #{port}_cluster {"
+  pputs "upstream #{$server.name}_#{port}_cluster {"
   num.times {|i| pputs "  server 127.0.0.1:#{port+i};"}
   pputs "}\n"
 
   oputs <<-eos
   location / {
-    proxy_pass http://#{port}_cluster;
+    proxy_pass http://#{$server.name}_#{port}_cluster;
     proxy_redirect off;
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
