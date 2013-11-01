@@ -159,13 +159,13 @@ def mailman
 end
 
 # Proxy to some backend.
-def proxy(port, num = 1)
+def proxy(port, num = 1, location = '/')
   pputs "upstream #{$server.name}_#{port}_cluster {"
   num.times {|i| pputs "  server 127.0.0.1:#{port+i};"}
   pputs "}\n"
 
   oputs <<-eos
-  location / {
+  location #{location} {
     proxy_pass http://#{$server.name}_#{port}_cluster;
     proxy_redirect off;
     proxy_set_header Host $host;
